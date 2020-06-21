@@ -1,0 +1,525 @@
+#此为Python的实例
+
+1.Hello World 实例
+	# 该实例输出 Hello World!
+	print('Hello World!')
+
+2.数字求和
+	#用户输入数字
+	num1 = input('请输入第一个数字')
+	num2 = input('请输入第二个数字')
+
+	#求和
+	sum = float(num1) + float(num2)
+
+	#输出结果
+	print('数字{0}和数字{1}相加的结果为：{2}'.format(num1,num2,sum))
+
+3.平方根
+(1)	#用户输入数字
+	num = float(input('请输入一个数字'))
+
+	#求平方根
+	num_sqrt = num ** 0.5
+
+	#输出结果
+	print(' %.3f 的平方根为 %.3f'%(num ,num_sqrt))
+	
+(2)	import cmath
+	#用户输入数字
+	num = int(input('请输入一个数字'))
+
+	#求平方根
+	num_sqrt = cmath.sqrt(num)
+
+	#输出结果
+	print('{0} 的平方根为 {1:0.3f}+{2:0.3f}j'.format(num ,num_sqrt.real,num_sqrt.imag))
+
+4.二次方程
+	# 二次方程式 ax**2 + bx + c = 0
+	# a、b、c 用户提供，为实数，a ≠ 0
+	import cmath
+	a = float(input('请输a:'))
+	b = float(input('请输b:'))
+	c = float(input('请输c:'))
+
+	#计算
+	d = (b**2) - (4*a*c)
+	sol1 = (-b-cmath.sqrt(d))/(2*a)
+	sol2 = (-b+cmath.sqrt(d))/(2*a)
+
+	#输出结果
+	print('结果为{0}和{1}'.format(sol1,sol2))
+	
+5.计算三角形的面积
+	#用户输入三角形三边长数据
+	a = float(input('请输三角形的第一边长:'))
+	b = float(input('请输三角形的第二边长:'))
+	c = float(input('请输三角形的第三边长:'))
+	#判断是否能构成三角形
+	while a+b<=c or a+c<=b or b+c<=a:
+		print ('输入的边构不成三角形，请重新输入！')
+		a = float(input('请输三角形的第一边长:'))
+		b = float(input('请输三角形的第二边长:'))
+		c = float(input('请输三角形的第三边长:'))
+	#计算三角形面积
+	s = (a + b + c) / 2
+	area = (s*(s-a)*(s-b)*(s-c)) ** 0.5
+
+	#输出结果
+	print('三角形的面积为{0:.2f}'.format(area))
+	
+6.计算圆的面积
+	#定义一个方法来计算圆的面积
+	def findArea(r):
+		PI = 3.1415926
+		return PI * (r*r)
+
+	#用户输入圆的半径数据
+	r = float(input('圆的半径为：'))
+
+	#调用方法
+	print('圆的面积为 %.6f' %findArea(r))
+	
+7.随机数的生成
+	#导入(random)随机数模块
+	import random
+	#输出随机数
+	print(random.randint(0,100))
+	
+8.摄氏温度转华氏温度
+	#用户输入摄氏度
+	Celsius = float(input('请输入一个摄氏度'))
+	#转换为华氏度
+	Fahrenheit = (Celsius * 1.8) + 32
+	print('%.1f 摄氏度转化为华氏度为 %.1f' %(Celsius,Fahrenheit))
+	
+9.交换变量
+	#用户输入两个变量
+	x = float(input('请输入x的值：'))
+	y = float(input('请输入y的值：'))
+
+	#进行变量交换
+	temp = x
+	x = y
+	y = temp
+
+	#输出交换后的值
+	print('交换后的x为：{0}\n交换后的y为：{1}'.format(x,y))
+	
+10.if 语句
+	#用户输入一个数字
+	num = float(input('请输入一个数字：'))
+	#判断数字的极性
+	if num > 0:
+		print('这是一个正数')
+	elif num < 0:
+		print('这是一个负数')
+	else:
+		print('这是0')
+		
+11.判断字符串是否为数字
+	#创建一个函数来判断字符串是否为数字
+	def is_number(s):
+		try:
+			float(s)
+			return True
+		except ValueError:
+			pass
+
+		try:
+			import unicodedata
+			unicodedata.numeric(s)
+			return True
+		except (TypeError, ValueError):
+			pass
+
+		return False
+
+	#测试字符串和数字
+	print(is_number('foo'))
+	print(is_number('123'))
+	print(is_number('1.3'))
+	print(is_number('-6'))
+	print(is_number('1e3'))
+
+	#测试 Unicode
+	# 阿拉伯语 5
+	print(is_number('٥'))  # True
+	# 泰语 2
+	print(is_number('๒'))  # True
+	# 中文数字
+	print(is_number('四')) # True
+	# 版权号
+	print(is_number('©'))  # False
+	
+12.判断奇数偶数
+	#用户输入一个数
+	num = int(input('请输入一个数字：'))
+
+	#进行判断
+	if (num % 2) == 0:
+		print("{}是一个偶数" .format(num))
+	else:
+		print('{}是一个奇数' .format(num))
+
+13.判断闰年
+	#用户输入一个年份
+	year = int(input('请输入一个年份：'))
+
+	#进行判断
+	if (year % 4) == 0:
+		if (year % 100) == 0:
+			if (year % 400) == 0:
+				print('{}是闰年' .format(year))
+			else:
+				print('{}不是闰年' .format(year))
+		else:
+			print('{}是闰年'.format(year))
+	else:
+		print('{}不是闰年'.format(year))
+		
+14.获取最大值函数
+	#最简单的
+	print(max(1,2))
+	print(max('a','b'))
+
+	#使用列表和元组
+	print(max([1,2]))
+	print(max((1,2)))
+
+	#更多实例
+	print("80, 100, 1000 最大值为: ", max(80, 100, 1000))
+	print("-20, 100, 400最大值为: ", max(-20, 100, 400))
+	print("-80, -20, -10最大值为: ", max(-80, -20, -10))
+	print("0, 100, -400最大值为:", max(0, 100, -400))
+
+
+15.质数判断
+	#用户输入一个数字
+	num = int(input('请输入一个数：'))
+
+	#质数的条件
+	if num > 1:
+		for i in range(2,num):
+			if (num % i) == 0:
+				print(num,'不是质数')
+				print(i,'乘以',num//i,'是',num)
+				break
+		else:
+			print(num,'是质数')
+	else:
+		print(num,'不是质数')
+
+16.输出指定范围内的素数
+	#用户输入一个范围
+	lower = int(input('请输入区间最小值：'))
+	upper = int(input('请输入区间最大值：'))
+
+	#遍历找出素数
+	for num in range(lower,upper):
+		if (num >= 1) & (lower < upper):
+			for i in range(2,num):
+				if (num % i) == 0:
+					break
+			else:
+				print(num)
+
+17.阶乘实例
+	#用户输入一个数字
+	num = int(input('请输入一个数：'))
+	factorial = 1
+
+	#对数字进行判断
+	if num < 0:
+		print('抱歉，负数没有阶乘')
+	elif num == 0:
+		print('0的阶乘为1')
+	else:
+		for i in range(1,num+1):
+			factorial *= i
+		print(num,'的阶乘为',factorial)
+
+18.九九乘法表
+	for i in range(1,10):
+		for j in range(1,i+1):
+			print(i,'*',j,'=',i*j,end='   ')
+		print('\n')
+
+19.斐波那契数列
+	#获取用户输入数据
+	nterms = int(input('您需要几项：'))
+
+	#定义第一项和第二项
+	n1 = 0
+	n2 = 1
+	count = 2
+
+	#判断输入是否合法
+	if nterms <= 0:
+		print('请输入一个正整数')
+	elif nterms == 1:
+		print('斐波那契数列：',n1)
+	else:
+		print('斐波那契数列：',n1,',',n2,end=' , ')
+		while count < nterms:
+			nth = n1 + n2
+			print(nth,end=' , ')
+			n1 = n2
+			n2 = nth
+			count += 1
+
+20.阿姆斯特朗数
+	#获取用户输入数据
+	num = int(input('请输入一个数：'))
+	#初始化变量
+	sum = 0
+	#判断数字的位数
+	n = len(str(num))
+
+	#进行判断
+	temp = num
+	while temp > 0:
+		digit = temp % 10
+		sum += digit ** n
+		temp //= 10
+
+	#输出结果
+	if num == sum:
+		print(num,'是阿姆斯特朗数')
+	else:
+		print(num,'不是阿姆斯特朗数')
+
+21.十进制转二进制、八进制、十六进制
+	#获取用户输入的十进制数
+	num = int(input('请输入一个十进制数：'))
+
+	print('十进制数为：', num)
+	print('转换为二进制为：', bin(num))
+	print('转换为八进制为：', oct(num))
+	print('转换为十六进制为：', hex(num))
+	
+22.ASCII码与字符相互转换
+	#用户输入一个字符
+	c = input('请输入一个字符：')
+	#用户输入一个ASCII码
+	a = int(input('请输入一个ASCII码：'))
+
+	print(c,'的ASCII码为：',ord(c))
+	print(a,'对应的字符为：',chr(a))
+
+23.最大公约数算法
+	#定义一个函数
+	def hcf(x, y):
+		if x > y:
+			smaller = y
+		else:
+			smaller = x
+
+		for i in range(1,smaller+1):
+			if((x % i == 0)and(y % i == 0)):
+				hcf = i
+		return hcf
+
+	#用户输入连个数字
+	num1 = int(input('输入第一个数字：'))
+	num2 = int(input('输入第二个数字：'))
+	print(num1,'和',num2,'的最大公约数为',hcf(num1,num2))
+
+24.最小公倍数算法
+	#定义一个函数
+	def lcm(x, y):
+		if x > y:
+			greater = x
+		else:
+			greater = y
+
+		while(True):
+			if((greater % x == 0)and(greater % y == 0)):
+				lcm = greater
+				break
+			greater += 1
+		return lcm
+
+	#用户输入两个数字
+	num1 = int(input('输入第一个数字：'))
+	num2 = int(input('输入第二个数字：'))
+	print(num1,'和',num2,'的最小公倍数为',lcm(num1,num2))
+
+25. 简单计算器实现
+	#定义函数
+	def add(x, y):
+		return x + y
+	def substract(x,y):
+		return x - y
+	def multiply(x, y):
+		return x * y
+	def divide(x,y):
+		return x / y
+
+	#用户选择
+	print('选择运算：1、加 2、减 3、乘 4、除')
+	choice = int(input('请输入你的选择(1/2/3/4):'))
+	#用户输入数字
+	num1 = int(input('请输入第一个数字'))
+	num2 = int(input('请输入第二个数字'))
+	#进行运算
+	if choice == 1:
+		print(num1,'+',num2,'=',add(num1,num2))
+	if choice == 2:
+		print(num1,'-',num2,'=',substract(num1,num2))
+	if choice == 3:
+		print(num1,'*',num2,'=',multiply(num1,num2))
+	if choice == 4:
+		print(num1,'/',num2,'=',divide(num1,num2))
+
+26.生成日历
+	#引入日历模块
+	import calendar
+	#输入指定年月
+	year = int(input('输入年份：'))
+	month = int(input('输入月份：'))
+	#显示日历
+	print(calendar.month(year,month))
+
+27.使用递归斐波那契数列
+	#构建函数
+	def recur_fibo(n):
+		if n<= 1:
+			return n
+		else:
+			return(recur_fibo(n-1) + recur_fibo(n-2))
+
+	#获取用户输入
+	nterms = int(input('您要输出几项:'))
+
+	#检查输入的数字是否正确
+	if nterms <= 0:
+		print('请输入一个正数')
+	else:
+		print('斐波那契数列：')
+		for i in range(nterms):
+			print(recur_fibo(i),end=' ')
+
+28.文件 IO
+	#写文件
+	with open(r'C:\Users\adam\Desktop\s.txt','wt') as out_file:
+		out_file.write("该文本写入到文件中\n看到我了吧")
+
+	#读文件
+	with open(r'C:\Users\adam\Desktop\s.txt','rt') as in_file:
+		text = in_file.read()
+
+	print(text)
+
+29.字符串判断
+	str = input('请输入一个字符串：')
+	print(str.isalnum())#判断所有字符都是数字或字母
+	print(str.isalpha())#判断所有字符都是字母
+	print(str.isdigit())#判断所有字符都是数字
+	print(str.islower())#判断所有字符都是小写
+	print(str.isupper())#判断所有字符都是大写
+	print(str.istitle())#判断所有字符都是标题（首字母大写）
+	print(str.isspace())#判断所有字符都是空白字符
+
+30.字符串大小写转换
+	str = input('请输入一个字符串：')
+	print(str.upper())#将字符串中的小写字母都转换为大写字母
+	print(str.lower())#将字符串中的大写字母都转换为小写字母
+	print(str.capitalize())#将第一个字母转换为大写字母
+	print(str.title())#将每个单词的第一个字母都转换为大写
+	
+31.计算每个月天数
+	#导入日历模块
+	import calendar
+	#询问用户查询具体年月
+	year = int(input('请输入要查询的年份：'))
+	month = int(input('请输入要查询的月份：'))
+
+	print(calendar.monthrange(year,month))
+
+32.获取昨天日期
+	#导入datetime模块
+	import datetime
+	#构建函数
+	def getYesterday():
+		today = datetime.date.today()
+		oneday = datetime.timedelta(days=1)
+		yesterday = today - oneday
+		return yesterday
+	#输出
+	print(getYesterday())
+
+33.约瑟夫生者死者小游戏
+	people = {}
+	for x in range(1, 31):
+		people[x] = 1
+	check = 0#当前船员报数的数字
+	i = 1#当前报数的船员序号
+	j = 0#已经下船的人数
+	while i <= 31:
+		if i == 31:#本次循环报数已进行到末尾
+			i = 1#从头继续报数
+		elif j == 15:#下船人数达到15，结束游戏
+			break
+		else:
+			if people[i] == 0:#跳过已经下船的人
+				i += 1
+				continue
+			else:
+				check += 1
+				if check == 9:#数到9
+					people[i] = 0#下船
+					check = 0#重新报数
+					print(i,'号下船了')
+					j += 1#记录下船人数
+				else:
+					i += 1#正常报数
+					continue
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
